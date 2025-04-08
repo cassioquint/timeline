@@ -1,0 +1,45 @@
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    font-family: sans-serif;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.timeline-header {
+    position: sticky;
+    top: 0;
+    display: grid;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 0;
+    border-bottom: 2px solid #ccc;
+    z-index: 1;
+}
+
+.timeline-month {
+    padding: 4px 0;
+    border-right: 1px solid #ddd;
+    min-width: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.timeline-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.timeline-lane {
+    display: grid;
+    position: relative;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px dashed #ddd;
+    width: 100%;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: .7rem 100%;
+}

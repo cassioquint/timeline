@@ -1,0 +1,85 @@
+.timeline-item {
+    display: flex;
+    background-color: #4a90e2;
+    color: white;
+    padding: 1rem .5rem;
+    border-radius: 4px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    justify-content: space-between;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: nowrap;
+    max-width: 100%;
+    gap: .5rem;
+    border: 2px solid #4876b3;
+    min-width: 0;
+    transition: box-shadow 0.25s ease;
+}
+
+.timeline-item:hover {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6), 0 0 8px #316daa;
+}
+
+.item-title {
+    font-size: 8pt;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    width: 100%;
+}
+
+.item-date-area {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    min-width: 6rem;
+}
+
+.item-date {
+    font-size: 70%;
+}
+
+.category-recruitment {
+    background-color: #FFB347;
+    border: 2px solid #E69500;
+}
+
+.category-planning {
+    background-color: #AEC6CF;
+    border: 2px solid #5A9ECF;
+}
+
+.category-translation {
+    background-color: #77DD77;
+    border: 2px solid #44AA44;
+}
+
+.category-design {
+    background-color: #F49AC2;
+    border: 2px solid #D16C9F;
+}
+
+.category-editing {
+    background-color: #CBAACB;
+    border: 2px solid #9B7DAA;
+}
+
+.category-development {
+    background-color: #FFD700;
+    border: 2px solid #C6A300;
+}
+
+.category-testing {
+    background-color: #FF6961;
+    border: 2px solid #D34F49;
+}
+
+.category-default {
+    background-color: #4a90e2;
+    border: 2px solid #4876b3;
+}
