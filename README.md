@@ -1,4 +1,4 @@
-🗂️ ## PlanTracks
+## 🗂️ PlanTracks
 PlanTracks is a lightweight, interactive timeline component built with React. It displays events across a time grid and allows users to focus on individual months and interact with items, such as renaming them directly in the UI.
 ----------------------------------------------------------------------------------------------------------------------------------------
 
