@@ -13,6 +13,7 @@
     display: grid;
     font-weight: bold;
     text-align: center;
+    color: #777;
     padding: 8px 0;
     border-bottom: 2px solid #ccc;
     z-index: 1;
@@ -24,6 +25,12 @@
     min-width: 0;
     word-break: break-word;
     overflow-wrap: break-word;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.timeline-month:hover {
+    background-color: #eee;
 }
 
 .timeline-body {

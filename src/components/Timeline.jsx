@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import timelineItems from "../data/timelineItems";
 import { assignLanes } from "../utils/assignLanes";
-import { getMonthLabels } from "../utils/dateUtils";
+import { getMonthLabels, getColumnIndex } from "../utils/dateUtils";
 import TimelineItem from "./TimelineItem";
 import "./Timeline.css";
 
@@ -13,26 +13,44 @@ const Timeline = () => {
     const months = getMonthLabels(firstDate, lastDate);
     const totalDays = months.reduce((sum, m) => sum + m.span, 0);
 
+    const [focusedMonthIndex, setFocusedMonthIndex] = useState(null);
+    const visibleMonths = focusedMonthIndex !== null
+        ? [months[focusedMonthIndex]]
+        : months;
+
+    const visibleTotalDays = visibleMonths.reduce((sum, m) => sum + m.span, 0);
+    const monthStartIndex = focusedMonthIndex !== null
+        ? months.slice(0, focusedMonthIndex).reduce((sum, m) => sum + m.span, 0)
+        : 0;
+
     return (
         <div className="timeline-container">
             <div
                 className="timeline-header"
                 style={{
                     display: "grid",
-                    gridTemplateColumns: `repeat(${totalDays}, minmax(6px, 1fr))`
+                    gridTemplateColumns: `repeat(${visibleTotalDays}, minmax(6px, 1fr))`
                 }}
             >
-                {months.map((month, index) => (
-                    <div
-                        key={index}
-                        className="timeline-month"
-                        style={{
-                            gridColumn: `span ${month.span}`
-                        }}
-                    >
-                        {month.label}
-                    </div>
-                ))}
+                {visibleMonths.map((month, index) => {
+                    const actualIndex = focusedMonthIndex !== null ? focusedMonthIndex : index;
+
+                    return (
+                            <div
+                                key={actualIndex}
+                                className="timeline-month"
+                                style={{
+                                    gridColumn: `span ${month.span}`
+                                }}
+                                onClick={() =>
+                                    setFocusedMonthIndex(focusedMonthIndex === actualIndex ? null : actualIndex)
+                                }
+                            >
+                                {month.label}
+                            </div>
+                        )
+                    }
+                )}
             </div>
             <div className="timeline-body">
                 {lanes.map((lane, index) => (
@@ -41,16 +59,32 @@ const Timeline = () => {
                         className="timeline-lane"
                         style={{
                             display: "grid",
-                            gridTemplateColumns: `repeat(${totalDays}, minmax(6px, 1fr))`
+                            gridTemplateColumns: `repeat(${visibleTotalDays}, minmax(6px, 1fr))`
                         }}
                     >
-                        {lane.map((item) => (
-                            <TimelineItem
-                                key={item.id}
-                                item={item}
-                                firstDate={firstDate}
-                            />
-                        ))}
+                        {lane.map((item) => {
+                            const itemStartIndex = getColumnIndex(item.start, firstDate);
+                            if (
+                                focusedMonthIndex !== null &&
+                                (itemStartIndex < monthStartIndex ||
+                                    itemStartIndex >= monthStartIndex + months[focusedMonthIndex].span)
+                            ) {
+                                return null;
+                            }
+                            return (
+                                    <TimelineItem
+                                        key={item.id}
+                                        item={item}
+                                        firstDate={new Date(
+                                            firstDate.getFullYear(),
+                                            firstDate.getMonth(),
+                                            1
+                                        )}
+                                        offsetDays={monthStartIndex}
+                                    />
+                                )
+                            }
+                        )}
                     </div>
                 ))}
             </div>

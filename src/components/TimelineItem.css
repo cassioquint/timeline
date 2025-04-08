@@ -17,6 +17,7 @@
     border: 2px solid #4876b3;
     min-width: 0;
     transition: box-shadow 0.25s ease;
+    height: 2.5rem;
 }
 
 .timeline-item:hover {
@@ -33,11 +34,26 @@
     width: 100%;
 }
 
+.item-title-input {
+    width: 100%;
+    font-size: 8pt;
+    font-weight: bold;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: inherit;
+}
+
 .item-date-area {
     display: flex;
     flex-direction: column;
     gap: .5rem;
-    min-width: 6rem;
+    text-align: right;
+    max-width: 3rem;
+    margin-left: auto;
+    transition: opacity 0.2s ease;
 }
 
 .item-date {

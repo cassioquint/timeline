@@ -8,6 +8,7 @@ body {
 }
 
 h1 {
+  margin-left: 1rem;
   font-family: 'Boldonse', sans-serif;
   color: #5A9ECF;
 }
