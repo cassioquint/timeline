@@ -19,7 +19,7 @@ const Timeline = () => {
                 className="timeline-header"
                 style={{
                     display: "grid",
-                    gridTemplateColumns: `repeat(${totalDays}, .7rem)`
+                    gridTemplateColumns: `repeat(${totalDays}, minmax(6px, 1fr))`
                 }}
             >
                 {months.map((month, index) => (
@@ -41,7 +41,7 @@ const Timeline = () => {
                         className="timeline-lane"
                         style={{
                             display: "grid",
-                            gridTemplateColumns: `repeat(${totalDays}, .7rem)`
+                            gridTemplateColumns: `repeat(${totalDays}, minmax(6px, 1fr))`
                         }}
                     >
                         {lane.map((item) => (

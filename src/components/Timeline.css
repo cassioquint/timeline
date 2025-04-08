@@ -1,7 +1,7 @@
 .timeline-container {
     display: flex;
     flex-direction: column;
-    padding: 16px;
+    padding: 0;
     font-family: sans-serif;
     overflow-x: auto;
     width: 100%;

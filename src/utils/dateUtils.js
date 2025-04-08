@@ -39,7 +39,6 @@ export function getMonthLabels(startDate, endDate) {
  * @returns {number} - The column index based on days.
  */
 export function getColumnIndex(date, firstDate) {
-    console.log(date)
     const d1 = new Date(firstDate);
     const d2 = new Date(date);
     const diffTime = d2.getTime() - d1.getTime();
